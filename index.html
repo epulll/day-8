@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+     <meta charset="utf-8">
+     <meta name="viewport" content="width=device-width,initial-scale=1">
+</head>
+<body>
+	<h1>DOM manipulation</h1>
+	<input type="text" id="name" placeholder="Enter your name">
+	<input type="text" id="age" placeholder="Enter your age">
+	<button onClick="buttonClicked()">click me!</button>
+    <p id="message"></p>
+    <hr>
+    <h2>Atrribute manipulation</h2>
+    <button onClick="sayHello()" id="firstbutton">Click me</button>
+    <button onClick="activateButton()" id="secondButton">Activate Button</button>
+    <hr>
+    <h2>To do list</h2>
+    <input type="text" id="newItem" placeholder="Enter item name">
+    <button onclick="addItemPressed()">Add new item</button>
+    <ul id="itemList">
+     
+    </ul>
+    <hr>
+    <h2>Senarai pekerja</h2>
+    <input type="text"placeholder="Nama Pekerja" id="namaPekerja">
+    <input type="email"placeholder="Email Pekerja" id="emailPekerja">
+    <input type="text"placeholder="No telefon pekerja" id="noTelPekerja">
+    <button onClick="tambahPekerja()">Tambah Pekerja</button>
+
+     <table>
+    <thead>
+        <th>nama pekerja</th>
+        <th>email</th>
+        <th>no Tel</th>
+    </thead>
+     <tbody id="senaraiPekerja">    
+        
+    </tbody>
+  </table>
+
+     	
+ <script type="text/javascript">
+
+
+
+    	 function tambahPekerja(){
+            // create td x 3
+            var newName = document.createElement("td");
+            var newEmail = document.createElement("td");
+            var newNoTel = document.createElement("td");
+
+            // add text in td x 3
+            newName.innerHTML = document.getElementById("namaPekerja").value;
+            newEmail.innerHTML = document.getElementById("emailPekerja").value;
+            newNoTel.innerHTML = document.getElementById("noTelPekerja").value;
+
+            // create tr x 1
+            var trow = document.createElement("tr");
+
+            // masukkan td ke tr x 3 *appendChild = DIMASUKKAN*
+           trow.appendChild(newName);
+            trow.appendChild(newEmail);
+            trow.appendChild(newNoTel);
+
+            // tr ke tbody x 1
+            document.getElementById("senaraiPekerja").appendChild(trow);
+
+            // kosongkn input 
+            document.getElementById("namaPekerja").value = ""
+            document.getElementById("emailPekerja").value = ""
+            document.getElementById("noTelPekerja").value = ""
+            
+        }
+
+
+    	
+
+
+
+
+
+
+    	function addItemPressed(){
+    		var newLi= document.createElement("li");
+    		newLi.innerHTML = document.getElementById("newItem").value;
+    		document.getElementById("itemList").appendChild(newLi);
+    		document.getElementById("newItem").value= "";
+    	}
+
+	function buttonClicked(){
+		var name = document.getElementById("name").value;
+		var age = document.getElementById("age").value;
+		document.getElementById("message").innerHTML="Hello "+ name + " you are " + age + " years old. ";
+
+	}
+
+	function sayHello(){
+		alert("hello world");}
+
+	
+
+	function activateButton(){
+		if(!document.getElementById("firstbutton").disabled){
+		document.getElementById("firstbutton").disabled= true;
+		document.getElementById("secondButton").innerHTML="Activate Button";
+	}
+	else{
+		document.getElementById("firstbutton").removeAttribute("disabled");
+		document.getElementById("secondButton").innerHTML="Deactivate Button";
+	}
+
+    }
+</script>
+</body>
+</html>
